@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PastebinHome {
-
     //Variables
     private WebDriver driver;
     //Input of the code.
@@ -37,7 +36,6 @@ public class PastebinHome {
         scroll();
         ten.click();
     }
-
 
     //Find the input Paste Name / Title and put a string
     public void pastebinName(String projectName){
