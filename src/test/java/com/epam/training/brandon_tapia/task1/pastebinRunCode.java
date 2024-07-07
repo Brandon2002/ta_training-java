@@ -7,7 +7,7 @@ import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class PastebinRunCode {
+public class pastebinRunCode {
     private WebDriver driver;
 
     //Initialize a new instance of "ChromeDriver"

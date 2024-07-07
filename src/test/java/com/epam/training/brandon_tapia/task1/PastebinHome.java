@@ -11,16 +11,16 @@ public class PastebinHome {
     private WebDriver driver;
     //Input of the code.
     @FindBy(id="postform-text")
-    private WebElement code;
+    public WebElement code;
     //Select minutes
     @FindBy(id="select2-postform-expiration-container")
-    private WebElement sel;
+    public WebElement sel;
     //10 minutes
     @FindBy(xpath="//li[contains(text(), \"10 Minutes\")]")
-    private WebElement ten;
+    public WebElement ten;
     //Input text of the new pastebin
     @FindBy(id="postform-name")
-    private WebElement name;
+    public WebElement name;
     //Open the webpage
     //Initialize driver
     //Sendkeys of the code.
