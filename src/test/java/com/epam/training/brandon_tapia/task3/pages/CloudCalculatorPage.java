@@ -162,8 +162,6 @@ public class CloudCalculatorPage {
 
     /**
      * Switches to the new window/tab opened after clicking "Submit" and retrieves the instance text.
-     * @return The text content of the instance information
-     * @throws InterruptedException If interrupted during thread sleep
      */
     public void switchWindow() {
         Set<String> handles = driver.getWindowHandles();
