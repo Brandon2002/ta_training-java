@@ -5,10 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class PastebinPage2 {
     private WebDriver driver;
@@ -38,19 +34,19 @@ public class PastebinPage2 {
     public WebElement title;
 
     // Locator to click the button "Create new paste".
-    @FindBy(xpath = "//*[@id=\"w0\"]/div[5]/div[1]/div[10]/button")
+    @FindBy(xpath = "//button[contains(text(), 'Create New Paste')]")
     public WebElement button;
 
     // Locator of the name of the paste.
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div[1]/div[2]/div[3]/div[1]/h1")
+    @FindBy(className = "info-top")
     public WebElement headTitle;
 
     // Locator to identify the sintax "Bash".
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[1]/a[1]")
+    @FindBy(xpath = "//a[contains(text(), \"Bash\")]")
     public WebElement sintax;
 
     // Locator to find the second line of code.
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div[1]/div[4]/div[2]/ol/li[2]/div")
+    @FindBy(xpath = "(//div[contains(@class, 'de1')])[2]")
     public WebElement secondText;
 
     /**
@@ -75,11 +71,9 @@ public class PastebinPage2 {
 
     /**
      * Scrolls and selects Bash syntax in the format dropdown.
-     *
-     * @param pix Pixels to scroll down by.
      */
-    public void setSpanBash(int pix) {
-        scroll(pix);
+    public void setSpanBash() {
+        scroll(500);
         span.click();
         bash.click();
     }
@@ -104,40 +98,24 @@ public class PastebinPage2 {
     /**
      * Click the button to create a new paste
      */
-    public void clickButton() {
+    public void createNewPaste() {
         scroll(200);
         button.click();
     }
 
     /**
-     * Retrieves the header title and checks if it contains the specified text.
+     * Checks if the given parameters match the current values of corresponding text fields.
      *
-     * @param contain Text to check for in the header title
-     * @return True if the header title contains the specified text, false otherwise
+     * @param contain           The content to compare with the main title.
+     * @param sintax1           The syntax to compare with the current syntax.
+     * @param secondTextOfCode  The second code text to compare with the current second text.
+     * @return                  true if all parameters match the current text field values, false otherwise.
      */
-    public boolean getTitle(String contain) {
-        return headTitle.getText().contains(contain);
-    }
-
-    /**
-     * Retrieves the syntax highlight type from the page.
-     *
-     * @return The text indicating the syntax highlight type
-     */
-    public String getSintax() {
-        return sintax.getText();
-    }
-
-
-    /**
-     * Retrieves the second text block content from the page.
-     * Waits for the element to be visible before retrieving text.
-     * @return The text content of the second text block
-     */
-    public String getText() {
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOf(secondText));
-        return secondText.getText();
+    public boolean checkPaste(String contain, String sintax1, String secondTextOfCode) {
+        String headTitle1 = headTitle.getText();
+        String bash = sintax.getText();
+        String secondText1 = secondText.getText();
+        return contain.equals(headTitle1) && sintax1.equals(bash) && secondTextOfCode.equals(secondText1);
     }
 
     /**

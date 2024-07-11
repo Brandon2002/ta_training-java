@@ -165,7 +165,7 @@ public class CloudCalculatorPage {
      * @return The text content of the instance information
      * @throws InterruptedException If interrupted during thread sleep
      */
-    public String getInstances() throws InterruptedException {
+    public void switchWindow() {
         Set<String> handles = driver.getWindowHandles();
         String originalHandle = driver.getWindowHandle();
 
@@ -175,38 +175,26 @@ public class CloudCalculatorPage {
                 break;
             }
         }
-        Thread.sleep(1000);
-        return instance2.getText();
 
     }
 
-    // Methods to retrieve various details from the summary page
-    public String getOperatingSystem(){
-        return system.getText();
-    }
+    public boolean validateSummaryValues(int expectedInstances, String expectedOS, String expectedProvisionalModel, String expectedMachineType, String expectedGpuType, String expectedNumOfGpus, String expectedLocalSsd, String expectedRegion){
+        int instances = Integer.parseInt(instance2.getText());
+        String operatingSystem = system.getText();
+        String provisionalModel = model.getText();
+        String machineType = machineTypeText.getText();
+        String gpuTypeText = gpuType.getText();
+        String numberOfGpus = numOfGpus.getText();
+        String localSsdText = localSsd.getText();
+        String region = regionText.getText();
 
-    public String getProvisionalModel(){
-        return model.getText();
-    }
-
-    public String getMachineType(){
-        return machineTypeText.getText();
-    }
-
-    public String getGpuType(){
-        return gpuType.getText();
-    }
-
-    public String getNumberOfGpus(){
-        return numOfGpus.getText();
-    }
-
-    public String getLocalSsd(){
-        return localSsd.getText();
-    }
-
-    public String getRegion(){
-        return regionText.getText();
+        return expectedInstances == instances && expectedOS.equals(operatingSystem) &&
+                expectedProvisionalModel.equals(provisionalModel) &&
+                expectedMachineType.equals(machineType) &&
+                expectedGpuType.equals(gpuTypeText) &&
+                expectedNumOfGpus.equals(numberOfGpus) &&
+                expectedLocalSsd.equals(localSsdText) &&
+                expectedRegion.equals(region);
     }
 
     /**

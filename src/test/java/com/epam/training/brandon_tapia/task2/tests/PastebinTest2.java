@@ -37,19 +37,17 @@ public class PastebinTest2 {
 
         pastebinHome2.setUpBrowser(driver);
         pastebinHome2.textCode(codePastebin);
-        pastebinHome2.setSpanBash(500);
+        pastebinHome2.setSpanBash();
         pastebinHome2.setSpanMinutes();
         pastebinHome2.textTitle(title);
-        pastebinHome2.clickButton();
+        pastebinHome2.createNewPaste();
 
-        boolean actual = pastebinHome2.getTitle(title);
-        Assert.assertTrue(actual);
-
-        String actualBash = pastebinHome2.getSintax();
-        Assert.assertEquals(sin, actualBash);
-
-        String actualText = pastebinHome2.getText();
-        Assert.assertEquals(second, actualText);
+        boolean areValuesValid = pastebinHome2.checkPaste(
+                title,
+                sin,
+                second
+        );
+        Assert.assertTrue("Summary values are not as expected", areValuesValid);
     }
 
     /**
