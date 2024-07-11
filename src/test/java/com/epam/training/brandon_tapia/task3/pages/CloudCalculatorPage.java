@@ -106,7 +106,7 @@ public class CloudCalculatorPage {
      * Waits for the compute engine option to be visible and clicks it.
      * @throws InterruptedException If interrupted during thread sleep
      */
-    public void addEstimate() throws InterruptedException {
+    public void addEstimate(){
         clickElement(buttonAdd);
         wait.until(ExpectedConditions.visibilityOf(computeEngine));
         clickElement(computeEngine);

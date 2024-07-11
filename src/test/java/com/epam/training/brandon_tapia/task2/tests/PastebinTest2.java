@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class PastebinTest2 {
     // Variables
     public static WebDriver driver;
-    private String codePastebin = "git config --global user.name  \"New Sheriff in Town\"\n" +
+    final String codePastebin = "git config --global user.name  \"New Sheriff in Town\"\n" +
             "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
             "git push origin master --force\n";
     final String title = "how to gain dominance among developers";
