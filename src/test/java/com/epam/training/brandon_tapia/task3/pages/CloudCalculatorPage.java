@@ -104,7 +104,6 @@ public class CloudCalculatorPage {
     /**
      * Clicks the "Add to estimate" button on the calculator page.
      * Waits for the compute engine option to be visible and clicks it.
-     * @throws InterruptedException If interrupted during thread sleep
      */
     public void addEstimate(){
         clickElement(buttonAdd);

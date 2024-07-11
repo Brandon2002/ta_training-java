@@ -5,7 +5,7 @@ import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class cloudCalculatorTest {
+public class CloudCalculatorTest {
     public static WebDriver driver;
     public String numInstances = "4";
     public String operatingSystem = "Free: Debian, CentOS, CoreOS, Ubuntu or BYOL (Bring Your Own License)";

@@ -13,7 +13,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class PastebinTest {
     private static WebDriver driver;
-    private static PastebinPage pastebinPage;
 
     /**
      * Sets up the browser before all tests.
@@ -31,7 +30,7 @@ public class PastebinTest {
      */
     @Test
     public void testPostOnPastebin() {
-        pastebinPage = new PastebinPage();
+        PastebinPage pastebinPage = new PastebinPage();
         pastebinPage.setUpBrowser(driver);
         pastebinPage.code("Hello from Webdriver");
         pastebinPage.expiration();
