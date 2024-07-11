@@ -58,7 +58,7 @@ public class PastebinPage2 {
      *
      * @param driver The WebDriver instance to be used.
      */
-    public void SetUpBrowser(WebDriver driver) {
+    public void setUpBrowser(WebDriver driver) {
         this.driver = driver;
         driver.get("https://pastebin.com/");
         PageFactory.initElements(driver, this);
@@ -69,7 +69,7 @@ public class PastebinPage2 {
      *
      * @param text The text to be entered.
      */
-    public void TextCode(String text) {
+    public void textCode(String text) {
         code.sendKeys(text);
     }
 

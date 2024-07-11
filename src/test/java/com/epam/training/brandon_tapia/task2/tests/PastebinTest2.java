@@ -35,15 +35,15 @@ public class PastebinTest2 {
     public void pastebinTests(){
         PastebinPage2 pastebinHome2 = new PastebinPage2();
 
-        pastebinHome2.SetUpBrowser(driver);
-        pastebinHome2.TextCode(codePastebin);
+        pastebinHome2.setUpBrowser(driver);
+        pastebinHome2.textCode(codePastebin);
         pastebinHome2.setSpanBash(500);
         pastebinHome2.setSpanMinutes();
         pastebinHome2.textTitle(title);
         pastebinHome2.clickButton();
 
         boolean actual = pastebinHome2.getTitle(title);
-        Assert.assertEquals(true, actual);
+        Assert.assertTrue(actual);
 
         String actualBash = pastebinHome2.getSintax();
         Assert.assertEquals(sin, actualBash);
