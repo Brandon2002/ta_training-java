@@ -9,9 +9,22 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 
+/**
+ * CloudCalculatorTest is a test class for verifying the Google Cloud Platform Pricing Calculator.
+ * It extends {@link CloudCalculatorBaseTest} and uses TestNG for test execution.
+ */
 public class CloudCalculatorTest extends CloudCalculatorBaseTest{
+
+    /**
+     * WebDriver instance used to control the browser.
+     */
     private static WebDriver driver;
 
+    /**
+     * Test method that verifies the cloud pricing estimate functionality.
+     *
+     * @throws InterruptedException If interrupted during thread sleep
+     */
     @Test
     public void testCloud() throws InterruptedException {
         this.driver = CloudCalculatorBaseTest.driver;

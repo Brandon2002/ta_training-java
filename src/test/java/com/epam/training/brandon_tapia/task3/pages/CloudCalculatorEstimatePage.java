@@ -11,6 +11,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.Set;
 
+/**
+ * CloudCalculatorEstimatePage represents the estimate summary page in the Cloud Calculator application.
+ * It provides methods to interact with the page elements and validate the estimate summary values.
+ */
 public class CloudCalculatorEstimatePage {
     private WebDriver driver;
     private WebDriverWait wait;
@@ -38,14 +42,20 @@ public class CloudCalculatorEstimatePage {
     @FindBy(xpath = "//div//span//span//span[contains(text(), 'Netherlands (europe-west4)')]")
     public WebElement regionText;
 
+    /**
+     * Initializes the elements on the estimate page using PageFactory and sets up an explicit wait.
+     *
+     * @param driver the WebDriver instance used to interact with the page.
+     */
     public void initializeElementsEstimate(WebDriver driver){
         this.driver = driver;
-        PageFactory.initElements(driver, this);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        PageFactory.initElements(driver, this);
+
     }
 
     /**
-     * Switches to the new window/tab opened after clicking "Submit" and retrieves the instance text.
+     * Switches to the new window/tab opened after clicking "Submit".
      */
     public void switchWindow() {
         Set<String> handles = driver.getWindowHandles();
@@ -60,29 +70,16 @@ public class CloudCalculatorEstimatePage {
 
     }
 
-//    public boolean validateSummaryValues(int expectedInstances, String expectedOS, String expectedProvisionalModel, String expectedMachineType, String expectedGpuType, int expectedNumOfGpus, String expectedLocalSsd, String expectedRegion){
-//        wait.until(ExpectedConditions.visibilityOf(gpuType));
-//        int instances = Integer.parseInt(instance.getText());
-//        String operatingSystem = system.getText();
-//        String provisionalModel = model.getText();
-//        String machineType = machineTypeText.getText();
-//        String gpuTypeText = gpuType.getText();
-//        int numberOfGpus = Integer.parseInt(numOfGpus.getText());
-//        System.out.println(numberOfGpus);
-//        String localSsdText = localSsd.getText();
-//        String region = regionText.getText();
-//
-//        return expectedInstances == instances && expectedOS.equals(operatingSystem) &&
-//                expectedProvisionalModel.equals(provisionalModel) &&
-//                expectedMachineType.equals(machineType) &&
-//                expectedGpuType.equals(gpuTypeText) &&
-//                expectedNumOfGpus == numberOfGpus &&
-//                expectedLocalSsd.equals(localSsdText) &&
-//                expectedRegion.equals(region);
-//    }
-
+    /**
+     * Validates the values in the estimate summary page against the provided CloudCalculatorDataModel.
+     *
+     * @param data the CloudCalculatorDataModel containing the expected values
+     * @return true if the values in the estimate summary match the expected values; false otherwise
+     */
     public boolean validateSummaryValues(CloudCalculatorDataModel data){
+
         wait.until(ExpectedConditions.visibilityOf(gpuType));
+
         int instances = Integer.parseInt(instance.getText());
         String operatingSystem = system.getText();
         String provisionalModel = model.getText();

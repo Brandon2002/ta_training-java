@@ -2,6 +2,10 @@ package com.epam.training.brandon_tapia.task3.services;
 
 import com.epam.training.brandon_tapia.task3.model.CloudCalculatorDataModel;
 
+/**
+ * CloudCalculatorDataCreator provides methods to create instances of {@link CloudCalculatorDataModel}
+ * using test data retrieved from property files.
+ */
 public class CloudCalculatorDataCreator {
     public static final String TESTDATA_NUM_INSTANCES = "testdata.num.instances";
     public static final String TESTDATA_OPERATING_SYSTEM = "testdata.operating.system";
@@ -12,6 +16,11 @@ public class CloudCalculatorDataCreator {
     public static final String TESTDATA_LOCAL_SSD = "testdata.local.ssd";
     public static final String TESTDATA_REGION = "testdata.region";
 
+    /**
+     * Creates a {@link CloudCalculatorDataModel} instance with data read from property files.
+     *
+     * @return A {@link CloudCalculatorDataModel} instance populated with data from property files
+     */
     public static CloudCalculatorDataModel withCredentialsFromProperty() {
         return new CloudCalculatorDataModel(
                 Integer.parseInt(DataReaderService.getTestData(TESTDATA_NUM_INSTANCES)),

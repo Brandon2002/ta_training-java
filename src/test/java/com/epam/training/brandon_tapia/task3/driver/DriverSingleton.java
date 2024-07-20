@@ -6,13 +6,30 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class DriverBase {
+/**
+ * DriverBase is a utility class that provides a singleton instance of WebDriver.
+ * It supports Chrome, Firefox, and Edge browsers. The browser type is specified
+ * through the system property "browser". If the property is not set, Chrome is used by default.
+ */
+public class DriverSingleton {
+    // The WebDriver instance is kept as a singleton.
     private static WebDriver driver;
 
-    private DriverBase() {}
+    // Private constructor to prevent instantiation.
+    private DriverSingleton() {}
+
+    /**
+     * Returns the singleton instance of WebDriver. If the WebDriver is not initialized,
+     * it sets up the WebDriver based on the specified browser type.
+     *
+     * @return the singleton instance of WebDriver
+     */
     public static WebDriver getDriver() {
         if (driver == null) {
-            String browser = System.getProperty("browser", ""); // Default to "chrome" if "browser" is not set
+            // Get the browser type from the system property "browser"
+            String browser = System.getProperty("browser", "");
+
+            // Setup WebDriver based on the browser type
             switch (browser.toLowerCase()) {
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
@@ -26,6 +43,7 @@ public class DriverBase {
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
             }
+            // Maximize the browser window
             driver.manage().window().maximize();
         }
         return driver;

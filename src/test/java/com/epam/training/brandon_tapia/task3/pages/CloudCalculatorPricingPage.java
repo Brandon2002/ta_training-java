@@ -8,6 +8,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+
+/**
+ * CloudCalculatorPricingPage represents the pricing configuration page of the Google Cloud Platform Pricing Calculator.
+ * It provides methods to interact with the page elements, such as selecting machine type, GPU, SSD, and region,
+ * as well as finalizing and sharing the estimate.
+ */
 public class CloudCalculatorPricingPage {
     /**
      * The WebDriver instance used to control the browser.
@@ -18,13 +24,6 @@ public class CloudCalculatorPricingPage {
      * The WebDriverWait instance used to wait for certain conditions to be met before proceeding.
      */
     private WebDriverWait wait;
-
-    // WebElements annotated with @FindBy for easy identification and interaction
-//    @FindBy(xpath = "//button[contains(., 'Add to estimate')]")
-//    public WebElement buttonAdd;
-//
-//    @FindBy(className = "d5NbRd-EScbFb-JIbuQc")
-//    public WebElement computeEngine;
 
     @FindBy(id = "c13")
     public WebElement instancesInput;
@@ -62,52 +61,11 @@ public class CloudCalculatorPricingPage {
     @FindBy(css = "a[track-name='open estimate summary']")
     public WebElement summit;
 
-//    @FindBy(xpath = "//div//span//span//span[contains(text(), '4')]")
-//    public WebElement instance;
-//
-//    @FindBy(xpath = "//div//span//span//span[contains(text(), 'Free: Debian, CentOS, CoreOS, Ubuntu or BYOL (Bring Your Own License)')]")
-//    public WebElement system;
-//
-//    @FindBy(xpath = "//div//span//span//span[contains(text(), 'Regular')]")
-//    public WebElement model;
-//
-//    @FindBy(xpath = "//div//span//span//span[contains(text(), 'n1-standard-8, vCPUs: 8, RAM: 30 GB')]")
-//    public WebElement machineTypeText;
-//
-//    @FindBy(xpath = "//div//span//span//span[contains(text(), 'NVIDIA V100')]")
-//    public WebElement gpuType;
-//
-//    @FindBy(xpath = "//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div[2]/div[2]/div[1]/div[2]/div[4]/span[3]/span[1]/span[2]")
-//    public WebElement numOfGpus;
-//
-//    @FindBy(xpath = "//div//span//span//span[contains(text(), '2x375 GB')]")
-//    public WebElement localSsd;
-//
-//    @FindBy(xpath = "//div//span//span//span[contains(text(), 'Netherlands (europe-west4)')]")
-//    public WebElement regionText;
-
-//    /**
-//     * Opens the Google Cloud Platform Pricing Calculator page in the browser.
-//     * Initializes the PageFactory and WebDriverWait.
-//     * @param driver WebDriver instance to use
-//     */
-//    public void openPage(WebDriver driver){
-//        driver.get("https://cloud.google.com/products/calculator/?hl=en");
-//        PageFactory.initElements(driver, this);
-//        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        this.driver = driver;
-//    }
-
-//    /**
-//     * Clicks the "Add to estimate" button on the calculator page.
-//     * Waits for the compute engine option to be visible and clicks it.
-//     */
-//    public void addEstimate(){
-//        clickElement(buttonAdd);
-//        wait.until(ExpectedConditions.visibilityOf(computeEngine));
-//        clickElement(computeEngine);
-//    }
-
+    /**
+     * Initializes the web elements on the pricing page.
+     *
+     * @param driver WebDriver instance to use
+     */
     public void initializeElements(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -122,12 +80,17 @@ public class CloudCalculatorPricingPage {
         wait.until(ExpectedConditions.visibilityOf(instancesInput));
 
         instancesInput.click();
+
         instancesInput.sendKeys(Keys.CONTROL + "a");
+
         instancesInput.sendKeys(Keys.BACK_SPACE);
+
         instancesInput.sendKeys("4");
+
         scroll(700);
 
         wait.until(ExpectedConditions.visibilityOf(machineType));
+
         machineType.click();
 
         selectMachineType.click();
@@ -139,13 +102,16 @@ public class CloudCalculatorPricingPage {
      */
     public void followingData2() throws InterruptedException {
         scroll(750);
+
         addGpuButton.click();
 
         scroll(350);
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(gpuModel));
         wait.until(ExpectedConditions.elementToBeClickable(gpuModel));
         gpuModel.click();
+
         selectGpuModel.click();
 
         ssd.click();
@@ -153,55 +119,23 @@ public class CloudCalculatorPricingPage {
         wait.until(ExpectedConditions.visibilityOf(selectSsd));
         wait.until(ExpectedConditions.elementToBeClickable(selectSsd));
         selectSsd.click();
+
         wait.until(ExpectedConditions.visibilityOf(region));
         region.click();
 
         wait.until(ExpectedConditions.visibilityOf(selectRegion));
         selectRegion.click();
+
         scroll(350);
+
         Thread.sleep(1000);
+
         wait.until(ExpectedConditions.visibilityOf(buttonShare));
         buttonShare.click();
+
         wait.until(ExpectedConditions.visibilityOf(summit));
         summit.click();
     }
-
-//    /**
-//     * Switches to the new window/tab opened after clicking "Submit" and retrieves the instance text.
-//     */
-//    public void switchWindow() {
-//        Set<String> handles = driver.getWindowHandles();
-//        String originalHandle = driver.getWindowHandle();
-//
-//        for (String handle : handles) {
-//            if (!handle.equals(originalHandle)) {
-//                driver.switchTo().window(handle);
-//                break;
-//            }
-//        }
-//
-//    }
-//
-//    public boolean validateSummaryValues(int expectedInstances, String expectedOS, String expectedProvisionalModel, String expectedMachineType, String expectedGpuType, String expectedNumOfGpus, String expectedLocalSsd, String expectedRegion){
-//        wait.until(ExpectedConditions.visibilityOf(gpuType));
-//        int instances = Integer.parseInt(instance.getText());
-//        String operatingSystem = system.getText();
-//        String provisionalModel = model.getText();
-//        String machineType = machineTypeText.getText();
-//        String gpuTypeText = gpuType.getText();
-//        String numberOfGpus = numOfGpus.getText();
-//        System.out.println(numberOfGpus);
-//        String localSsdText = localSsd.getText();
-//        String region = regionText.getText();
-//
-//        return expectedInstances == instances && expectedOS.equals(operatingSystem) &&
-//                expectedProvisionalModel.equals(provisionalModel) &&
-//                expectedMachineType.equals(machineType) &&
-//                expectedGpuType.equals(gpuTypeText) &&
-//                expectedNumOfGpus.equals(numberOfGpus) &&
-//                expectedLocalSsd.equals(localSsdText) &&
-//                expectedRegion.equals(region);
-//    }
 
     /**
      * Scrolls the page vertically by a specified number of pixels.
