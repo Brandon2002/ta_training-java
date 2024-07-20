@@ -5,7 +5,8 @@ import com.epam.training.brandon_tapia.task3.pages.CloudCalculatorEstimatePage;
 import com.epam.training.brandon_tapia.task3.pages.CloudCalculatorHomePage;
 import com.epam.training.brandon_tapia.task3.pages.CloudCalculatorPricingPage;
 import com.epam.training.brandon_tapia.task3.services.CloudCalculatorDataCreator;
-import org.junit.*;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 
 public class CloudCalculatorTest extends CloudCalculatorBaseTest{
@@ -28,7 +29,7 @@ public class CloudCalculatorTest extends CloudCalculatorBaseTest{
         estimate.switchWindow();
 
         boolean areValuesValid = estimate.validateSummaryValues(calculatorData);
-        Assert.assertTrue("Summary values are not as expected", areValuesValid);
+        Assert.assertTrue(areValuesValid, "Summary values are not as expected");
 
     }
 }

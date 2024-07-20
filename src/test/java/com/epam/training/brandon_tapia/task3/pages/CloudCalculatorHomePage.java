@@ -33,10 +33,10 @@ public class CloudCalculatorHomePage {
      * @param driver WebDriver instance to use
      */
     public void openPage(WebDriver driver){
+        this.driver = driver;
         driver.get("https://cloud.google.com/products/calculator/?hl=en");
         PageFactory.initElements(driver, this);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        this.driver = driver;
     }
 
     /**
