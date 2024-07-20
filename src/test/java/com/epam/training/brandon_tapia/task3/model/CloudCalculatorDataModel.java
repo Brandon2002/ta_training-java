@@ -3,14 +3,14 @@ package com.epam.training.brandon_tapia.task3.model;
 import java.util.Objects;
 
 public class CloudCalculatorDataModel {
-    private int numInstances;
-    private String operatingSystem;
-    private String provisionalModel;
-    private String machineType;
-    private String gpuType;
-    private int numOfGpus;
-    private String localSsd;
-    private String region;
+    private final int numInstances;
+    private final String operatingSystem;
+    private final String provisionalModel;
+    private final String machineType;
+    private final String gpuType;
+    private final int numOfGpus;
+    private final String localSsd;
+    private final String region;
 
     public CloudCalculatorDataModel(int numInstances, String operatingSystem, String provisionalModel,
                                  String machineType, String gpuType, int numOfGpus,
