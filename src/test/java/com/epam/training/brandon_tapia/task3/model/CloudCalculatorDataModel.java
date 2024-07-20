@@ -29,65 +29,65 @@ public class CloudCalculatorDataModel {
         return numInstances;
     }
 
-    public void setNumInstances(int numInstances) {
-        this.numInstances = numInstances;
-    }
+//    public void setNumInstances(int numInstances) {
+//        this.numInstances = numInstances;
+//    }
 
     public String getOperatingSystem() {
         return operatingSystem;
     }
 
-    public void setOperatingSystem(String operatingSystem) {
-        this.operatingSystem = operatingSystem;
-    }
+//    public void setOperatingSystem(String operatingSystem) {
+//        this.operatingSystem = operatingSystem;
+//    }
 
     public String getProvisionalModel() {
         return provisionalModel;
     }
 
-    public void setProvisionalModel(String provisionalModel) {
-        this.provisionalModel = provisionalModel;
-    }
+//    public void setProvisionalModel(String provisionalModel) {
+//        this.provisionalModel = provisionalModel;
+//    }
 
     public String getMachineType() {
         return machineType;
     }
 
-    public void setMachineType(String machineType) {
-        this.machineType = machineType;
-    }
+//    public void setMachineType(String machineType) {
+//        this.machineType = machineType;
+//    }
 
     public String getGpuType() {
         return gpuType;
     }
 
-    public void setGpuType(String gpuType) {
-        this.gpuType = gpuType;
-    }
+//    public void setGpuType(String gpuType) {
+//        this.gpuType = gpuType;
+//    }
 
     public int getNumOfGpus() {
         return numOfGpus;
     }
 
-    public void setNumOfGpus(int numOfGpus) {
-        this.numOfGpus = numOfGpus;
-    }
+//    public void setNumOfGpus(int numOfGpus) {
+//        this.numOfGpus = numOfGpus;
+//    }
 
     public String getLocalSsd() {
         return localSsd;
     }
 
-    public void setLocalSsd(String localSsd) {
-        this.localSsd = localSsd;
-    }
+//    public void setLocalSsd(String localSsd) {
+//        this.localSsd = localSsd;
+//    }
 
     public String getRegion() {
         return region;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
-    }
+//    public void setRegion(String region) {
+//        this.region = region;
+//    }
 
     @Override
     public String toString() {

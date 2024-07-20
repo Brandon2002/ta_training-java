@@ -1,6 +1,5 @@
 package com.epam.training.brandon_tapia.task3.pages;
 
-import com.epam.training.brandon_tapia.task3.model.CloudCalculatorDataModel;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
