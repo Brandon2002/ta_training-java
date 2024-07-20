@@ -1,53 +1,34 @@
 package com.epam.training.brandon_tapia.task3.tests;
 
-import com.epam.training.brandon_tapia.task3.pages.CloudCalculatorPage;
+import com.epam.training.brandon_tapia.task3.model.CloudCalculatorDataModel;
+import com.epam.training.brandon_tapia.task3.pages.CloudCalculatorEstimatePage;
+import com.epam.training.brandon_tapia.task3.pages.CloudCalculatorHomePage;
+import com.epam.training.brandon_tapia.task3.pages.CloudCalculatorPricingPage;
+import com.epam.training.brandon_tapia.task3.services.CloudCalculatorDataCreator;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class CloudCalculatorTest {
-    public static WebDriver driver;
-    public int numInstances = 4;
-    public String operatingSystem = "Free: Debian, CentOS, CoreOS, Ubuntu or BYOL (Bring Your Own License)";
-    public String provisionalModel = "Regular";
-    public String machineType = "n1-standard-8, vCPUs: 8, RAM: 30 GB";
-    public String gpuType = "NVIDIA V100";
-    public String numOfGpus = "1";
-    public String localSsd = "2x375 GB";
-    public String region = "Netherlands (europe-west4)";
-
-    @BeforeClass
-    public static void setUp(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+public class CloudCalculatorTest extends CloudCalculatorBaseTest{
+    private static WebDriver driver;
 
     @Test
     public void testCloud() throws InterruptedException {
-        CloudCalculatorPage cloudCalculator = new CloudCalculatorPage();
-        cloudCalculator.openPage(driver);
-        cloudCalculator.addEstimate();
-        cloudCalculator.followingData( 3);
+        this.driver = CloudCalculatorBaseTest.driver;
+        CloudCalculatorDataModel calculatorData = CloudCalculatorDataCreator.withCredentialsFromProperty();
+        CloudCalculatorHomePage cloudCalculatorHome = new CloudCalculatorHomePage();
+        CloudCalculatorPricingPage cloudCalculator = new CloudCalculatorPricingPage();
+        CloudCalculatorEstimatePage estimate = new CloudCalculatorEstimatePage();
+
+        cloudCalculatorHome.openPage(driver);
+        cloudCalculatorHome.addEstimate();
+        cloudCalculator.initializeElements(driver);
+        cloudCalculator.followingData();
         cloudCalculator.followingData2();
-        cloudCalculator.switchWindow();
+        estimate.initializeElementsEstimate(driver);
+        estimate.switchWindow();
 
-        boolean areValuesValid = cloudCalculator.validateSummaryValues(
-                numInstances,
-                operatingSystem,
-                provisionalModel,
-                machineType,
-                gpuType,
-                numOfGpus,
-                localSsd,
-                region
-        );
+        boolean areValuesValid = estimate.validateSummaryValues(calculatorData);
         Assert.assertTrue("Summary values are not as expected", areValuesValid);
-    }
 
-    @AfterClass
-    public static void tearDown(){
-        if(driver!=null){
-            driver.quit();
-        }
     }
 }
