@@ -64,10 +64,6 @@ public class CloudCalculatorPricingPage {
     public void initializeElements(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        /**
-         * The WebDriverWait instance used to wait for certain conditions to be met before proceeding.
-         */
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     /**
      * Performs actions to select machine type and configuration on the calculator page.
