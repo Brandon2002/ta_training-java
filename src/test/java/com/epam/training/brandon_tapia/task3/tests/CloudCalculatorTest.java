@@ -16,18 +16,13 @@ import org.openqa.selenium.WebDriver;
 public class CloudCalculatorTest extends CloudCalculatorBaseTest{
 
     /**
-     * WebDriver instance used to control the browser.
-     */
-    private static WebDriver driver;
-
-    /**
      * Test method that verifies the cloud pricing estimate functionality.
      *
      * @throws InterruptedException If interrupted during thread sleep
      */
     @Test
     public void testCloud() throws InterruptedException {
-        this.driver = CloudCalculatorBaseTest.driver;
+        WebDriver driver = CloudCalculatorBaseTest.driver;
         CloudCalculatorDataModel calculatorData = CloudCalculatorDataCreator.withCredentialsFromProperty();
         CloudCalculatorHomePage cloudCalculatorHome = new CloudCalculatorHomePage();
         CloudCalculatorPricingPage cloudCalculator = new CloudCalculatorPricingPage();

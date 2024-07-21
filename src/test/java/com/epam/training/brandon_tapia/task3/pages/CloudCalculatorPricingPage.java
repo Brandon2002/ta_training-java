@@ -20,11 +20,6 @@ public class CloudCalculatorPricingPage {
      */
     private WebDriver driver;
 
-    /**
-     * The WebDriverWait instance used to wait for certain conditions to be met before proceeding.
-     */
-    private WebDriverWait wait;
-
     @FindBy(id = "c13")
     public WebElement instancesInput;
 
@@ -69,7 +64,10 @@ public class CloudCalculatorPricingPage {
     public void initializeElements(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        /**
+         * The WebDriverWait instance used to wait for certain conditions to be met before proceeding.
+         */
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     /**
      * Performs actions to select machine type and configuration on the calculator page.
