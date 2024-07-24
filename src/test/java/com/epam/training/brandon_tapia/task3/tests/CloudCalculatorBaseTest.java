@@ -7,8 +7,6 @@ import org.testng.annotations.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Listeners;
 
-import java.sql.Driver;
-
 @Listeners({TestListener.class})
 public class CloudCalculatorBaseTest {
 
