@@ -20,6 +20,8 @@ public class CloudCalculatorPricingPage {
      */
     private WebDriver driver;
 
+    private WebDriverWait wait;
+
     @FindBy(id = "c13")
     public WebElement instancesInput;
 
@@ -63,62 +65,62 @@ public class CloudCalculatorPricingPage {
      */
     public void initializeElements(WebDriver driver){
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+
     }
     /**
      * Performs actions to select machine type and configuration on the calculator page.
      */
     public void followingData() throws InterruptedException{
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        // Wait until the instances input field is visible
         wait.until(ExpectedConditions.visibilityOf(instancesInput));
 
+        // Clear the instances input field and set the number of instances to 4
         instancesInput.click();
-
         instancesInput.sendKeys(Keys.CONTROL + "a");
-
         instancesInput.sendKeys(Keys.BACK_SPACE);
-
         instancesInput.sendKeys("4");
 
+        // Scroll down the page
         scroll(700);
 
+        // Wait until the machine type element is visible and select it
         wait.until(ExpectedConditions.visibilityOf(machineType));
-
         machineType.click();
-
         selectMachineType.click();
 
+        // Scroll down the page
         scroll(750);
 
+        // Add GPU and select the GPU model
         addGpuButton.click();
-
         scroll(350);
         wait.until(ExpectedConditions.visibilityOf(gpuModel));
         wait.until(ExpectedConditions.elementToBeClickable(gpuModel));
         gpuModel.click();
-
         selectGpuModel.click();
 
+        // Select SSD
         ssd.click();
-
         wait.until(ExpectedConditions.visibilityOf(selectSsd));
         wait.until(ExpectedConditions.elementToBeClickable(selectSsd));
         selectSsd.click();
 
+        // Select region
         wait.until(ExpectedConditions.visibilityOf(region));
         region.click();
-
         wait.until(ExpectedConditions.visibilityOf(selectRegion));
         selectRegion.click();
 
+        // Scroll down the page
         scroll(350);
 
+        // Wait and click on the share and submit buttons
         Thread.sleep(1000);
-
         wait.until(ExpectedConditions.visibilityOf(buttonShare));
         buttonShare.click();
-
         wait.until(ExpectedConditions.visibilityOf(summit));
         summit.click();
     }
