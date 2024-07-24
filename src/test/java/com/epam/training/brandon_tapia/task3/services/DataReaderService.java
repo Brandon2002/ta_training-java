@@ -12,7 +12,7 @@ public class DataReaderService {
      * ResourceBundle instance to manage the property files.
      * The bundle is loaded based on the system property "environment", defaulting to "dev".
      */
-    private static final ResourceBundle resourceBundle = ResourceBundle.getBundle(System.getProperty("environment", "dev"));
+    private static final ResourceBundle resourceBundle = ResourceBundle.getBundle(System.getProperty("environment", ""));
 
     /**
      * Retrieves the value associated with the specified key from the property file.

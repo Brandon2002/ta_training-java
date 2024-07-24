@@ -49,4 +49,10 @@ public class DriverSingleton {
         return driver;
     }
 
+    public static void tearDown(){
+        if(driver!=null){
+            driver.quit();
+        }
+    }
+
 }

@@ -68,7 +68,7 @@ public class CloudCalculatorPricingPage {
     /**
      * Performs actions to select machine type and configuration on the calculator page.
      */
-    public void followingData(){
+    public void followingData() throws InterruptedException{
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(instancesInput));
@@ -88,20 +88,12 @@ public class CloudCalculatorPricingPage {
         machineType.click();
 
         selectMachineType.click();
-    }
 
-    /**
-     * Performs actions to select GPU, SSD, region, and finalize the estimate on the calculator page.
-     * @throws InterruptedException If interrupted during thread sleep
-     */
-    public void followingData2() throws InterruptedException {
         scroll(750);
 
         addGpuButton.click();
 
         scroll(350);
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(gpuModel));
         wait.until(ExpectedConditions.elementToBeClickable(gpuModel));
         gpuModel.click();
@@ -130,6 +122,14 @@ public class CloudCalculatorPricingPage {
         wait.until(ExpectedConditions.visibilityOf(summit));
         summit.click();
     }
+
+//    /**
+//     * Performs actions to select GPU, SSD, region, and finalize the estimate on the calculator page.
+//     * @throws InterruptedException If interrupted during thread sleep
+//     */
+////    public void followingData2() throws InterruptedException {
+////
+////    }
 
     /**
      * Scrolls the page vertically by a specified number of pixels.

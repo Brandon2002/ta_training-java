@@ -7,6 +7,8 @@ import org.testng.annotations.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Listeners;
 
+import java.sql.Driver;
+
 @Listeners({TestListener.class})
 public class CloudCalculatorBaseTest {
 
@@ -18,8 +20,6 @@ public class CloudCalculatorBaseTest {
 
     @AfterClass
     public static void tearDown(){
-        if(driver!=null){
-            driver.quit();
-        }
+        DriverSingleton.tearDown();
     }
 }

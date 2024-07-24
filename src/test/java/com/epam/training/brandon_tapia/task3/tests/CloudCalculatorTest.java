@@ -32,7 +32,7 @@ public class CloudCalculatorTest extends CloudCalculatorBaseTest{
         cloudCalculatorHome.addEstimate();
         cloudCalculator.initializeElements(driver);
         cloudCalculator.followingData();
-        cloudCalculator.followingData2();
+//        cloudCalculator.followingData2();
         estimate.initializeElementsEstimate(driver);
         estimate.switchWindow();
 

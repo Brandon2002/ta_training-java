@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Smoke" verbose="1" >
+    <test name="all"   >
+        <classes>
+            <class name="com.epam.training.brandon_tapia.task3.tests.CloudCalculatorTest" />
+            <class name="com.epam.training.brandon_tapia.task3.tests.CloudCalculatorTest2" />
+        </classes>
+    </test>
+</suite>

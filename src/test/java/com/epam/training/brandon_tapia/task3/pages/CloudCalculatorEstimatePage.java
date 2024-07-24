@@ -18,28 +18,28 @@ import java.util.Set;
 public class CloudCalculatorEstimatePage {
     private WebDriver driver;
     private WebDriverWait wait;
-    @FindBy(xpath = "//div//span//span//span[contains(text(), '4')]")
-    public WebElement instance;
+    @FindBy(xpath = "//span[contains(text(), 'Number of Instances')]/following-sibling::span")
+    public WebElement numberOfInstances;
 
-    @FindBy(xpath = "//div//span//span//span[contains(text(), 'Free: Debian, CentOS, CoreOS, Ubuntu or BYOL (Bring Your Own License)')]")
-    public WebElement system;
+    @FindBy(xpath = "//span[contains(text(), 'Operating System / Software')]/following-sibling::span")
+    public WebElement operatingSystem;
 
-    @FindBy(xpath = "//div//span//span//span[contains(text(), 'Regular')]")
-    public WebElement model;
+    @FindBy(xpath = "//span[contains(text(), 'Provisioning Model')]/following-sibling::span")
+    public WebElement provisionalModel;
 
-    @FindBy(xpath = "//div//span//span//span[contains(text(), 'n1-standard-8, vCPUs: 8, RAM: 30 GB')]")
+    @FindBy(xpath = "//span[contains(text(), 'Machine type')]/following-sibling::span")
     public WebElement machineTypeText;
 
-    @FindBy(xpath = "//div//span//span//span[contains(text(), 'NVIDIA V100')]")
+    @FindBy(xpath = "//span[contains(text(), 'GPU Model')]/following-sibling::span")
     public WebElement gpuType;
 
-    @FindBy(xpath = "//*[@id=\"yDmH0d\"]/c-wiz[1]/div/div/div/div/div[2]/div[2]/div[1]/div[2]/div[4]/span[3]/span[1]/span[2]")
+    @FindBy(xpath = "//span[contains(text(), 'Number of GPUs')]/following-sibling::span")
     public WebElement numOfGpus;
 
-    @FindBy(xpath = "//div//span//span//span[contains(text(), '2x375 GB')]")
+    @FindBy(xpath = "//span[contains(text(), 'Local SSD')]/following-sibling::span")
     public WebElement localSsd;
 
-    @FindBy(xpath = "//div//span//span//span[contains(text(), 'Netherlands (europe-west4)')]")
+    @FindBy(xpath = "//span[contains(text(), 'Region')]/following-sibling::span")
     public WebElement regionText;
 
     /**
@@ -80,17 +80,17 @@ public class CloudCalculatorEstimatePage {
 
         wait.until(ExpectedConditions.visibilityOf(gpuType));
 
-        int instances = Integer.parseInt(instance.getText());
-        String operatingSystem = system.getText();
-        String provisionalModel = model.getText();
+        int instances = Integer.parseInt(numberOfInstances.getText());
+        String operatingSystem1 = operatingSystem.getText();
+        String provisionalModel1 = provisionalModel.getText();
         String machineType = machineTypeText.getText();
         String gpuTypeText = gpuType.getText();
         int numberOfGpus = Integer.parseInt(numOfGpus.getText());
         String localSsdText = localSsd.getText();
         String region = regionText.getText();
 
-        return  instances == data.getNumInstances() && operatingSystem.equals(data.getOperatingSystem()) &&
-                provisionalModel.equals(data.getProvisionalModel()) &&
+        return  instances == data.getNumInstances() && operatingSystem1.equals(data.getOperatingSystem()) &&
+                provisionalModel1.equals(data.getProvisionalModel()) &&
                 machineType.equals(data.getMachineType()) &&
                 gpuTypeText.equals(data.getGpuType()) &&
                 numberOfGpus == data.getNumOfGpus() &&
