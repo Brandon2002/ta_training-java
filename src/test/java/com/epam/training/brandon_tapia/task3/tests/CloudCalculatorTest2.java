@@ -17,7 +17,6 @@ public class CloudCalculatorTest2 extends CloudCalculatorBaseTest{
         CloudCalculatorDataModel calculatorData = CloudCalculatorDataCreator.withCredentialsFromProperty();
         CloudCalculatorHomePage home = new CloudCalculatorHomePage();
         OtherCalculatorPage other = new OtherCalculatorPage();
-//        OtherCalculatorEstimatePage estimate = new OtherCalculatorEstimatePage();}
         CloudCalculatorEstimatePage estimate = new CloudCalculatorEstimatePage();
 
         home.openPage(driver);
@@ -26,13 +25,10 @@ public class CloudCalculatorTest2 extends CloudCalculatorBaseTest{
         other.actions();
         estimate.initializeElementsEstimate(driver);
         estimate.switchWindow();
-        estimate.validateSummaryValues(calculatorData);
 
         boolean areValuesValid = estimate.validateSummaryValues(calculatorData);
         Assert.assertTrue(areValuesValid, "Summary values are not as expected");
-//        estimate.initializePage(driver);
-//        estimate.switchToEstimateWindow();
-//        estimate.validateSummaryValues(calculatorData);
+
 
 
     }

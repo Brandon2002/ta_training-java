@@ -86,7 +86,7 @@ public class OtherCalculatorPage extends CloudCalculatorPricingPage{
         scroll(350);
 
         // Wait and click on the share and submit buttons
-        Thread.sleep(1000);
+//        Thread.sleep(1000);
         wait.until(ExpectedConditions.visibilityOf(buttonShare));
         buttonShare.click();
         wait.until(ExpectedConditions.visibilityOf(summit));
