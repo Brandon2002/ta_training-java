@@ -34,16 +34,16 @@ public class CloudCalculatorPricingPage {
     @FindBy(xpath = "//button[@aria-label='Add GPUs']")
     public WebElement addGpuButton;
 
-    @FindBy(xpath = "//*[@id=\"ow4\"]/div/div/div/div/div/div/div[1]/div/div[2]/div[3]/div[23]/div/div[1]/div/div")
+    @FindBy(xpath = "//*[@id=\"ow5\"]/div/div/div/div/div/div/div[1]/div/div[2]/div[3]/div[23]/div/div[1]/div/div/div/div[1]")
     public WebElement gpuModel;
 
-    @FindBy(xpath = "//li[@data-value='nvidia-tesla-v100']")
+    @FindBy(xpath = "//li[@data-value=\"nvidia-tesla-v100\"]")
     public WebElement selectGpuModel;
 
-    @FindBy(xpath = "//*[@id=\"ow4\"]/div/div/div/div/div/div/div[1]/div/div[2]/div[3]/div[27]/div/div[1]/div/div/div/div[1]")
+    @FindBy(xpath = "//*[@id=\"ow5\"]/div/div/div/div/div/div/div[1]/div/div[2]/div[3]/div[27]/div/div[1]/div/div/div/div[1]")
     public WebElement ssd;
 
-    @FindBy(xpath = "//*[@id=\"ow4\"]/div/div/div/div/div/div/div[1]/div/div[2]/div[3]/div[27]/div/div[1]/div/div/div/div[2]/ul/li[3]")
+    @FindBy(xpath = "//*[@id=\"ow5\"]/div/div/div/div/div/div/div[1]/div/div[2]/div[3]/div[27]/div/div[1]/div/div/div/div[2]/ul/li[3]")
     public WebElement selectSsd;
 
     @FindBy(xpath = "//div[@aria-controls='c46']")
